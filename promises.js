@@ -1,3 +1,7 @@
+const throwButton = document.getElementById("throwPokeball").addEventListener("click", () => {
+    pokemonCatch(2);
+})
+
 const pokemonCatch = (id) => {
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -8,9 +12,7 @@ const pokemonCatch = (id) => {
             return response.json();
         })
         .then((data) => {
-            const pokemonChosen = data.species.name
-            console.log("The Pokemon you have chosen is: " + pokemonChosen)
+            const pokemonImg = document.getElementById("pokemonImgDisplay");
+            pokemonImg.src = data.sprites.front_default;
         })
 };
-
-pokemonCatch(2)
